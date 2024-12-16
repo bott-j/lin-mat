@@ -135,7 +135,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\constants.hpp" />
-    <ClInclude Include="inc\linalg.hpp" />
     <ClInclude Include="inc\mat.hpp" />
     <ClInclude Include="inc\linmat.hpp" />
     <ClInclude Include="inc\operators.hpp" />

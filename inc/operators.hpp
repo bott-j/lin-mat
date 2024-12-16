@@ -26,7 +26,7 @@
 
 #include "mat.hpp"
 
-namespace matlinalg
+namespace linmat
 {
 	// Overloaded operators in namespace scope
 	template <typename T>

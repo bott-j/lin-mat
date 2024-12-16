@@ -26,7 +26,7 @@
 #include "../inc/linmat.hpp"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
-using namespace matlinalg;
+using namespace linmat;
 
 namespace MatLinAlgUnitTests
 {

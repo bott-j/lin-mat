@@ -27,7 +27,7 @@
 #include <random>
 #include "inc/linmat.hpp"
 
-using namespace matlinalg;
+using namespace linmat;
 
 int main()
 {

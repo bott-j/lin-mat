@@ -28,7 +28,7 @@
 #include <stdexcept>
 #include <vector>
 
-namespace matlinalg
+namespace linmat
 {
 	/// <summary>
 	///		Real-valued matrix.
