@@ -25,7 +25,7 @@
 #define LINMAT_VEC_HPP_
 #include "mat.hpp"
 
-namespace matlinalg
+namespace linmat
 {
 	/// <summary>
 	///   Real-valued row vector.
