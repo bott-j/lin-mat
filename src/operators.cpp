@@ -24,7 +24,7 @@
 #include "../inc/operators.hpp"
 #include "../inc/mat.hpp"
 
-namespace matlinalg
+namespace linmat
 {
 	/// <summary>
 	///   Pipe operator for output stream.

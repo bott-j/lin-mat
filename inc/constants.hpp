@@ -24,7 +24,7 @@
 #ifndef LINMAT_CONSTANTS_HPP
 #define LINMAT_CONSTANTS_HPP
 
-namespace matlinalg
+namespace linmat
 {
 	namespace constants
 	{

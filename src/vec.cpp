@@ -23,7 +23,7 @@
 */
 #include "../inc/vec.hpp"
 
-namespace matlinalg
+namespace linmat
 {
 	/// <summary>
 	///   Row vector class constructor.

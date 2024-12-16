@@ -26,7 +26,7 @@
 #include "../inc/operators.hpp"
 #include "../inc/constants.hpp"
 
-namespace matlinalg {
+namespace linmat {
 
 	/// <summary>
 	///   Subscript operator.
