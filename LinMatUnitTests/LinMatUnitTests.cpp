@@ -410,5 +410,47 @@ namespace MatLinAlgUnitTests
 			// Evaluate result
 			Assert::AreEqual(c2, m1.trace());
 		}
+
+		TEST_METHOD(TestDet2)
+		{
+			unsigned int rows = 2;
+			unsigned int cols = 2;
+			double result;
+
+			mat<double> m{ {1,2}, {3,4} };
+
+			// Evaluate result
+			Assert::AreEqual(-2, m.det_2(), 0.001);
+			Assert::AreEqual(-2, m.det(), 0.001);
+		}
+
+		TEST_METHOD(TestDet3)
+		{
+			unsigned int rows = 3;
+			unsigned int cols = 3;
+			double result;
+
+			mat<double> m{ {1,2,2}, {3,4,6}, {4,7,2} };
+
+			// Evaluate result
+			Assert::AreEqual(12, m.det_3(), 0.001);
+			Assert::AreEqual(12, m.det(), 0.001);
+		}
+
+		TEST_METHOD(TestDetLeibniz)
+		{
+			unsigned int rows = 3;
+			unsigned int cols = 3;
+			double result;
+
+			mat<double> m{ {9,7,2,3},
+							{2,4,7,7},
+							{4,3,8,5},
+							{5,5,2,3} };
+
+			// Evaluate result
+			Assert::AreEqual(-70, m.det_leibniz(), 0.001);
+			Assert::AreEqual(-70, m.det(), 0.001);
+		}
 	};
 }
