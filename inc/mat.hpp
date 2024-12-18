@@ -25,7 +25,6 @@
 #define LINMAT_MAT_HPP_
 #include <iostream>
 #include <memory>
-#include <stdexcept>
 #include <vector>
 
 namespace linmat
@@ -64,6 +63,14 @@ namespace linmat
 		T frobenius_norm(void);
 		T spectral_norm(void);
 		T trace(void);
+		void permutations(
+			unsigned int k,
+			std::vector<unsigned int>& p,
+			std::vector<std::vector<unsigned int>>& ps,
+			std::vector<T>& ss,
+			T& s);
+		T det_leibniz(void);
+		T det(void);
 
 		// Accessor methods
 		unsigned int rows() const { return m_rows; }

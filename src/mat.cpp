@@ -22,6 +22,7 @@
  * IN THE SOFTWARE.
 */
 #include <ctime>
+#include <stdexcept>
 #include "../inc/mat.hpp"
 #include "../inc/operators.hpp"
 #include "../inc/constants.hpp"
@@ -324,7 +325,7 @@ namespace linmat {
 	T mat<T>::det_2(void)
 	{
 		// Enforce 2x2 condition
-		if (m_rows != 2 || m_rows != 2)
+		if (m_rows != 2 || m_cols != 2)
 			throw std::runtime_error("Requires 2x2 matrix.");
 
 		// Return determinant
@@ -341,7 +342,7 @@ namespace linmat {
 	T mat<T>::det_3(void)
 	{
 		// Enforce 3x3 condition
-		if (m_rows != 3 || m_rows != 3)
+		if (m_rows != 3 || m_cols != 3)
 			throw std::runtime_error("Requires 3x3 matrix.");
 
 		// Calculate determinant using analytical solution
@@ -366,7 +367,7 @@ namespace linmat {
 		T det;
 
 		// Enforce 2x2 condition
-		if (m_rows != 2 || m_rows != 2)
+		if (m_rows != 2 || m_cols != 2)
 			throw std::runtime_error("Requires 2x2 matrix.");
 
 		det = det_2();
@@ -398,7 +399,7 @@ namespace linmat {
 		T det;
 
 		// Enforce 2x2 condition
-		if (m_rows != 3 || m_rows != 3)
+		if (m_rows != 3 || m_cols != 3)
 			throw std::runtime_error("Requires 3x3 matrix.");
 
 		det = det_3();
@@ -482,6 +483,110 @@ namespace linmat {
 		}
 
 		return X;
+	}
+
+	/// <summary>
+	///     Uses Heap's algorithm to calculate set of permutations.
+	/// </summary>
+	/// <typeparam name="T">Element floating-point type (i.e. double).</typeparam>
+	/// <param name="k">Used for tracking depth of recursion.</param>
+	/// <param name="p">The current permutation.</param>
+	/// <param name="ps">The accumulated set of permutations.</param>
+	/// <param name="ss">The accumulated set of signs.</param>
+	/// <param name="s">The sign of the current permutation.</param>
+	/// <returns>N/A</returns>
+	template <typename T>
+	void mat<T>::permutations(
+		unsigned int k,
+		std::vector<unsigned int> &p,
+		std::vector<std::vector<unsigned int>>& ps,
+		std::vector<T> &ss,
+		T& s)
+	{
+		// Base case
+		if (k == 1)
+		{
+			// Store result
+			ps.push_back(p);
+			ss.push_back(s);
+		}
+		// Iterative case
+		else
+		{
+			permutations(k - 1, p, ps, ss, s);
+
+			// For remaining permutations
+			for (unsigned int i = 0; i < k - 1; i++)
+			{
+				// If even
+				if ((k & 1) == 0)
+					std::swap(p[i], p[k - 1]);
+				// Otherwise if odd
+				else
+					std::swap(p[0], p[k - 1]);
+				// Track the sign of swap operations
+				s = -s;
+				permutations(k - 1, p, ps, ss, s);
+			}
+		}
+	}
+	
+	/// <summary>
+	///		Calculates the determinant of an mxm matrix using Leibniz formula. 
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <returns>The determinant.</returns>
+	template <typename T>
+	T mat<T>::det_leibniz(void)
+	{
+		std::vector<std::vector<unsigned int>> ps;
+		std::vector<unsigned int> p0;
+		std::vector<T> ss; 
+		T s = 1;
+		T result = 0.0;
+
+		if (m_cols != m_rows)
+			throw std::runtime_error("Determinant is undefined for a rectangular matrix.");
+
+		// There are m! permutations, find them
+		for (int i = 0; i < m_cols; i++)
+			p0.push_back(i);
+		permutations(m_cols, p0, ps, ss, s);
+
+		// Iterate over permutations, compute and sum terms
+		for (unsigned int j = 0; j < ps.size(); j++)
+		{
+			T term = ss[j];
+			for (unsigned int i = 0; i < m_cols; i++) 
+				term *= m_elements[i][ps[j][i]];
+			
+			result += term;
+		}
+
+		return result;
+	}
+
+	/// <summary>
+	///   Calculates the determinant of the mxm matrix.
+	/// </summary>
+	/// <typeparam name="T">Element floating-point type (i.e. double).</typeparam>
+	/// <returns>The determinant.</returns>
+	template <typename T>
+	T mat<T>::det(void)
+	{
+		T result;
+
+		// If 2x2
+		if (m_rows == 2 && m_cols == 2)
+			result = det_2();
+		// If 3x3
+		else if (m_rows == 3 && m_cols == 3)
+			result = det_3();
+		// Otherwise
+		else
+			result = det_leibniz();
+		
+		return result;
 	}
 
 	// Explicit template instantiations
