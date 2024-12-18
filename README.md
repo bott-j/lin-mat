@@ -129,10 +129,12 @@ Inverse of m3 is:
 [ 1.35714 1.02857 -0.657143 -2.32857 ]
 ```
 
-Spectral (l2) and Frobenius norms may be calculated for matrices:
+Determinants, Spectral (l2) and Frobenius norms may be calculated for matrices:
 
 ```
 // Norms
+std::cout << "Determinant of m3 is:" << std::endl;
+std::cout << m3.det_leibniz() << std::endl;
 std::cout << "Spectral norm of m3 is:" << std::endl;
 std::cout << m3.spectral_norm() << std::endl;
 std::cout << "Frobenius norm of m3 is:" << std::endl;
@@ -142,6 +144,8 @@ std::cout << m3.frobenius_norm() << std::endl;
 Below is the output for the 4x4 example:
 
 ```
+Determinant of m3 is:
+-70
 Spectral norm of m3 is:
 19.1573
 Frobenius norm of m3 is:
