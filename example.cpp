@@ -69,7 +69,7 @@ int main()
 
 	// Norms
 	std::cout << "Determinant of m3 is:" << std::endl;
-	std::cout << m3.det_leibniz() << std::endl;
+	std::cout << m3.det() << std::endl;
 	std::cout << "Spectral norm of m3 is:" << std::endl;
 	std::cout << m3.spectral_norm() << std::endl;
 	std::cout << "Frobenius norm of m3 is:" << std::endl;
