@@ -439,8 +439,6 @@ namespace MatLinAlgUnitTests
 
 		TEST_METHOD(TestDetLeibniz)
 		{
-			unsigned int rows = 3;
-			unsigned int cols = 3;
 			double result;
 
 			mat<double> m{ {9,7,2,3},
@@ -451,6 +449,42 @@ namespace MatLinAlgUnitTests
 			// Evaluate result
 			Assert::AreEqual(-70, m.det_leibniz(), 0.001);
 			Assert::AreEqual(-70, m.det(), 0.001);
+		}
+
+		TEST_METHOD(TestLUDecomposition)
+		{
+			unsigned int rows = 4;
+			unsigned int cols = 4;
+			double result;
+
+			mat<double> m1{ {9,7,2,3},
+							{2,4,7,7},
+							{4,3,8,5},
+							{5,5,2,3} };
+
+			mat<double> m2{ {1,0,0,0},
+							{0.222,1,0,0},
+							{0.444,-0.045,1,0},
+							{0.555,0.454,-0.282,1} };
+
+			mat<double> m3{ {9,7,2,3},
+							{0,2.444,6.555,6.333},
+							{0,0,7.409,3.954},
+							{0,0,0,-0.429} };
+
+			mat<double> L(rows, cols);
+			mat<double> U(rows, cols);
+
+			// Perform LU decomposition
+			m1.lu_decomposition(L, U);
+
+			// Evaluate result
+			for (unsigned int i = 0; i < rows; i++)
+				for (unsigned int j = 0; j < cols; j++)
+				{
+					Assert::AreEqual(m2[i][j], L[i][j], 0.001);
+					Assert::AreEqual(m3[i][j], U[i][j], 0.001);
+				}
 		}
 	};
 }

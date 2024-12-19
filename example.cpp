@@ -82,5 +82,17 @@ int main()
 	std::cout << v2 << std::endl;
 	std::cout << "Dot product of v1 and v2 is:" << std::endl;
 	std::cout << v1.mult(v2) << std::endl;
+
+	// LU Decomposition
+	mat<double> L(4,4);
+	mat<double> U(4,4);
+	m3.lu_decomposition(L, U);
+	std::cout << "The LU decomposition of m3 is:" << std::endl;
+	std::cout << "L:" << std::endl;
+	std::cout << L << std::endl;
+	std::cout << "U:" << std::endl;
+	std::cout << U << std::endl;
+	std::cout << "The product of L and U is:" << std::endl;
+	std::cout << L.mult(U) << std::endl;
 }
 
