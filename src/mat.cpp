@@ -545,6 +545,7 @@ namespace linmat {
 		T s = 1;
 		T result = 0.0;
 
+		// Enforce square matrix
 		if (m_cols != m_rows)
 			throw std::runtime_error("Determinant is undefined for a rectangular matrix.");
 
@@ -587,6 +588,43 @@ namespace linmat {
 			result = det_leibniz();
 		
 		return result;
+	}
+
+	/// <summary>
+	///   Performs LU decomposition (factorization) of the matrix into
+	///   lower triangular matrix L and upper triangular matrix U. Also
+	///   reffered to as the LR decomposition.
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <param name="L">An empty matrix L which will be written to.</param>
+	/// <param name="U">An empty matrix U which will be written to.</param>
+	template <typename T>
+	void mat<T>::lu_decomposition(mat<T>& L,mat<T>& U)
+	{
+		// Enforce square matrix
+		if (m_cols != m_rows)
+			throw std::runtime_error("LU decomposition is undefined for a rectangular matrix.");
+
+		// Handle edge case
+		if (m_cols < 2)
+			throw std::runtime_error("Matrix dimensions must be greater than one.");
+
+		// Initialize L and U
+		L = mat<T>::make_eye(m_rows, m_cols);
+		U = (*this);
+
+		
+		for (int i = 0; i < m_rows; i++)
+		{
+			for (int j = i + 1; j < m_rows; j++)
+			{
+				L[j][i] = U[j][i] / U[i][i];
+
+				// Calculate U[j] = U[j] - L[j][i] * U[i]
+				for (int k = 0; k < m_rows; k++)
+					U[j][k] -= L[j][i] * U[i][k];
+			}
+		}
 	}
 
 	// Explicit template instantiations

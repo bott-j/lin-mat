@@ -152,6 +152,45 @@ Frobenius norm of m3 is:
 20.9284
 ```
 
+LU decomposition is performed using the lu_decomposition() method:
+
+```
+// LU Decomposition
+mat<double> L(4,4);
+mat<double> U(4,4);
+m3.lu_decomposition(L, U);
+std::cout << "The LU decomposition of m3 is:" << std::endl;
+std::cout << "L:" << std::endl;
+std::cout << L << std::endl;
+std::cout << "U:" << std::endl;
+std::cout << U << std::endl;
+std::cout << "The product of L and U is:" << std::endl;
+std::cout << L.mult(U) << std::endl;
+```
+
+The following L and U factors are produced for the example above:
+
+```
+The LU decomposition of m3 is:
+L:
+[ 1 0 0 0 ]
+[ 0.222222 1 0 0 ]
+[ 0.444444 -0.0454545 1 0 ]
+[ 0.555556 0.454545 -0.282209 1 ]
+
+U:
+[ 9 7 2 3 ]
+[ 0 2.44444 6.55556 6.33333 ]
+[ 0 0 7.40909 3.95455 ]
+[ 0 0 0 -0.429448 ]
+
+The product of L and U is:
+[ 9 7 2 3 ]
+[ 2 4 7 7 ]
+[ 4 3 8 5 ]
+[ 5 5 2 3 ]
+```
+
 Row and column vector classes are derived from the general matrix class and support similar operations:
 
 ```
