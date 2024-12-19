@@ -592,8 +592,8 @@ namespace linmat {
 
 	/// <summary>
 	///   Performs LU decomposition (factorization) of the matrix into
-	///   lower triangular matrix L and upper triangular matrix U. Also
-	///   reffered to as the LR decomposition.
+	///   lower triangular matrix L and upper triangular matrix U using
+	///   The Doolittle algorithm. Also reffered to as the LR decomposition.
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	/// <param name="L">An empty matrix L which will be written to.</param>
