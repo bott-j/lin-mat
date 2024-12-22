@@ -627,6 +627,53 @@ namespace linmat {
 		}
 	}
 
+	/// <summary>
+	///   Performs Cholesky decomposition (factorization) of the Hermitian 
+	///   positive-definite matrix into a lower triangular matrix L, such 
+	///   that A = LL^T. This implementation uses the Cholesky-Banachiewicz 
+	///   algorithm.
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <param name="L">An empty matrix L which will be written to.</param>
+	template <typename T>
+	void mat<T>::cholesky_decomposition(mat<T>& L)
+	{
+		T s;
+
+		// Enforce square matrix
+		if (m_cols != m_rows)
+			throw std::runtime_error("LU decomposition is undefined for a rectangular matrix.");
+
+		// Enforce Hermitian
+		for (unsigned int i = 0; i < m_rows; i++)
+			for (unsigned int j = 0; j <= i; j++)
+				if ((*this)[i][j] != (*this)[j][i])
+					throw std::runtime_error("Matrix must be Hermitian.");
+
+		// Handle edge case
+		if (m_cols < 2)
+			throw std::runtime_error("Matrix dimensions must be greater than one.");
+
+		// Initialize L and U
+		L = mat<T>::make_zeros(m_rows, m_cols);;
+
+		// For each row
+		for (unsigned int i = 0; i < m_rows; i++)
+		{
+			// For each column in the lower diagonal
+			for (unsigned int j = 0; j <= i; j++)
+			{
+				s = 0;
+				for (unsigned int k = 0; k < j; k++)
+					s += L[i][k] * L[j][k];
+				if (i == j)
+					L[i][j] = std::sqrt((*this)[i][j] - s);
+				else
+					L[i][j] = ((*this)[i][j] - s) / L[j][j];
+			}
+		}
+	}
+
 	// Explicit template instantiations
 	template class mat<float>;
 	template class mat<double>;

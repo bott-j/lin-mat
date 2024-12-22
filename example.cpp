@@ -94,5 +94,15 @@ int main()
 	std::cout << U << std::endl;
 	std::cout << "The product of L and U is:" << std::endl;
 	std::cout << L.mult(U) << std::endl;
+
+	// Cholesky Decomposition
+	m3.mult(m3.transpose()).cholesky_decomposition(L);
+	std::cout << "The matrix m3.m3 is:" << std::endl;
+	std::cout << m3.mult(m3.transpose()) << std::endl;
+	std::cout << "The Cholesky decomposition of m3.m3 is:" << std::endl;
+	std::cout << "L:" << std::endl;
+	std::cout << L << std::endl;
+	std::cout << "The product of L and L^T is:" << std::endl;
+	std::cout << L.mult(L.transpose()) << std::endl;
 }
 
