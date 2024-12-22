@@ -191,6 +191,43 @@ The product of L and U is:
 [ 5 5 2 3 ]
 ```
 
+For Hermitian positive-definite matrices, the Cholesky decomposition can be found using the cholesky_decomposition() method:
+
+```
+// Cholesky Decomposition
+m3.mult(m3.transpose()).cholesky_decomposition(L);
+std::cout << "The matrix m3.m3 is:" << std::endl;
+std::cout << m3.mult(m3.transpose()) << std::endl;
+std::cout << "The Cholesky decomposition of m3.m3 is:" << std::endl;
+std::cout << "L:" << std::endl;
+std::cout << L << std::endl;
+std::cout << "The product of L and L^T is:" << std::endl;
+std::cout << L.mult(L.transpose()) << std::endl;
+```
+
+For the example, this produces the following output:
+
+```
+The matrix m3.m3 is:
+[ 143 81 88 93 ]
+[ 81 118 111 65 ]
+[ 88 111 114 66 ]
+[ 93 65 66 63 ]
+
+The Cholesky decomposition of m3.m3 is:
+L:
+[ 11.9583 0 0 0 ]
+[ 6.77356 8.49228 0 0 ]
+[ 7.35893 7.20111 2.8267 0 ]
+[ 7.77705 1.45093 -0.593996 0.243852 ]
+
+The product of L and L^T is:
+[ 143 81 88 93 ]
+[ 81 118 111 65 ]
+[ 88 111 114 66 ]
+[ 93 65 66 63 ]
+```
+
 Row and column vector classes are derived from the general matrix class and support similar operations:
 
 ```

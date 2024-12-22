@@ -72,6 +72,7 @@ namespace linmat
 		T det_leibniz(void);
 		T det(void);
 		void lu_decomposition(mat<T>& L, mat<T>& U);
+		void cholesky_decomposition(mat<T>& L);
 
 		// Accessor methods
 		unsigned int rows() const { return m_rows; }

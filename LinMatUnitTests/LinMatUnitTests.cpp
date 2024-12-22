@@ -486,5 +486,32 @@ namespace MatLinAlgUnitTests
 					Assert::AreEqual(m3[i][j], U[i][j], 0.001);
 				}
 		}
+
+		TEST_METHOD(TestCholeskyDecomposition)
+		{
+			unsigned int rows = 4;
+			unsigned int cols = 4;
+			double result;
+
+			mat<double> m1{ {9,7,2,3},
+							{2,4,7,7},
+							{4,3,8,5},
+							{5,5,2,3} };
+
+			mat<double> m2{ {11.958,0,0,0},
+							{6.774,8.492,0,0},
+							{7.359,7.201,2.827,0},
+							{7.777,1.451,-0.594,0.244} };
+
+			mat<double> L(rows, cols);
+
+			// Perform LU decomposition
+			m1.mult(m1.transpose()).cholesky_decomposition(L);
+
+			// Evaluate result
+			for (unsigned int i = 0; i < rows; i++)
+				for (unsigned int j = 0; j < cols; j++)
+					Assert::AreEqual(m2[i][j], L[i][j], 0.001);
+		}
 	};
 }
