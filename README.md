@@ -29,7 +29,7 @@ mat<double> m2 = mat<double>::make_ones(3, 3);
 mat<double> I = mat<double>::make_eye(3, 3);
 ```
 
-The following example uses an initializer list to initialize a 4x4 matrix.
+The following example uses an initializer list to initialize a $$4 \times 4$$ matrix.
 
 ```
 mat<double> m3{ {9,7,2,3},
