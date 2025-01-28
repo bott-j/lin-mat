@@ -155,7 +155,7 @@ std::cout << "Frobenius norm of m3 is:" << std::endl;
 std::cout << m3.frobenius_norm() << std::endl;
 ```
 
-Below is the output for the 4x4 example:
+Below is the output for the $$4 \times 4$$ example:
 
 ```
 Determinant of m3 is:
