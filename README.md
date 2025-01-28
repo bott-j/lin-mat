@@ -2,9 +2,17 @@
 
 Linear algebra class library in C++ supporting matrix operations and matrix inversion. The class library has minimal dependencies and only uses the STL library for data structures, exceptions and console I/O. 
 
+* [Getting Started](#getting-started)
+* [Creating and Accessing Matrix Objects](#creating-and-accessing-matrix-objects)
+* [Matrix Arithmetic](#matrix-arithmetic)
+* [Matrix Inversion](#matrix-inversion)
+* [Matrix Determinants and Factorizations](#matrix-determinants-and-factorizations)
+
 ## Getting Started
 
 An example program is provided in "example.cpp" in the root directory.
+
+### Creating and Accessing Matrix Objects
 
 Matrix and vector objects can be created using class constructors, factory methods and initializer lists.
 
@@ -45,6 +53,8 @@ m1[0][0] = 1;
 m1[2][0] = 2;
 m1[0][2] = 3;
 ```
+
+### Matrix Arithmetic
 
 Element-wise addition, subtraction and multiplication is supported through operator overloads.
 
@@ -103,6 +113,8 @@ m1.I is:
 [ 2 0 0 ]
 ```
 
+### Matrix Inversion
+
 Matrix inversion is calculated analytically for the case of 2x2 and 3x3 matrices, and using the numerical Newton-Shulz method for the general case of an mxn matrix.
 
 ```
@@ -128,6 +140,8 @@ Inverse of m3 is:
 [ -0.785714 -0.542857 0.485714 1.24286 ]
 [ 1.35714 1.02857 -0.657143 -2.32857 ]
 ```
+
+### Matrix Determinants and Factorizations
 
 Determinants, Spectral (l2) and Frobenius norms may be calculated for matrices:
 
