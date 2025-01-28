@@ -125,7 +125,7 @@ std::cout << "Inverse of m3 is:" << std::endl;
 std::cout << m3.inv() << std::endl;
 ```
 
-The following output is produced for the 4x4 matrix inversion example:
+The following output is produced for the $$4 \times 4$$ matrix inversion example:
 
 ```
 m3 is:
