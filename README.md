@@ -115,7 +115,7 @@ m1.I is:
 
 ### Matrix Inversion
 
-Matrix inversion is calculated analytically for the case of $$2\times2$$ and $$3\times3$$ matrices, and using the numerical Newton-Shulz method for the general case of an $$m\timesn$$ matrix.
+Matrix inversion is calculated analytically for the case of $$2\times2$$ and $$3\times3$$ matrices, and using the numerical Newton-Shulz method for the general case of an $$m \times n$$ matrix.
 
 ```
 // Matrix inverse
