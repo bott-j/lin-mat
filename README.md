@@ -16,7 +16,7 @@ An example program is provided in "example.cpp" in the root directory.
 
 Matrix and vector objects can be created using class constructors, factory methods and initializer lists.
 
-For example, creating a 3x3 matrix with entries initialized to zero:
+For example, creating a $$3\times3$$ matrix with entries initialized to zero:
 
 ```
 mat<double> m1(3,3);
@@ -89,7 +89,7 @@ m1 + m2 is:
 [ 3 1 1 ]
 ```
 
-Matrix multiplication is supported with the mult() method:
+Matrix multiplication is supported with the *mult()* method:
 
 ```
 // Matrix multiplication
@@ -115,7 +115,7 @@ m1.I is:
 
 ### Matrix Inversion
 
-Matrix inversion is calculated analytically for the case of 2x2 and 3x3 matrices, and using the numerical Newton-Shulz method for the general case of an mxn matrix.
+Matrix inversion is calculated analytically for the case of $$2\times2$$ and $$3\times3$$ matrices, and using the numerical Newton-Shulz method for the general case of an $$m\timesn$$ matrix.
 
 ```
 // Matrix inverse
@@ -166,7 +166,7 @@ Frobenius norm of m3 is:
 20.9284
 ```
 
-LU decomposition is performed using the lu_decomposition() method:
+LU decomposition is performed using the *lu_decomposition()* method:
 
 ```
 // LU Decomposition
@@ -205,7 +205,7 @@ The product of L and U is:
 [ 5 5 2 3 ]
 ```
 
-For Hermitian positive-definite matrices, the Cholesky decomposition can be found using the cholesky_decomposition() method:
+For Hermitian positive-definite matrices, the Cholesky decomposition can be found using the *cholesky_decomposition()* method:
 
 ```
 // Cholesky Decomposition
